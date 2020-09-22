@@ -43,47 +43,27 @@ function mostrarTablaCompras() {
             </tr>
         `;
     }
-    document.querySelector("#tblCompras").innerHTML = html; console.log('hola');
+    document.querySelector("#tblCompras").innerHTML = html; 
 }
 
-/*
-//Muestra en el FrontEnd [Obejto objeto]
-async function load() {
-    let container = document.querySelector("#use-ajax");
-    let response = await fetch("http://localhost:3000/mock.json"); 
-    if (response.ok) {
-        let t = await response.json(); console.log(t);
-        container.innerHTML = t;
-    }
-}
-
-//Tiene en cuenta errores!!
-async function load() {
-    let container = document.querySelector("#use-ajax"); 
+ async function load() {
+/*    let container = document.querySelector("#use-ajax"); 
     container.innerHTML = "<h1>Loading...</h1>";
     try {
-        let response = await fetch("http://localhost:3000/mock.json");
+        let response = await fetch('/produto');
         if (response.ok) {
-            let t = await response.json(); console.log(t);
-            container.innerHTML = t;
+            let t = await response.json(); 
+            compras = t;
+            mostrarTablaCompras();
+            container.innerHTML = "";
         }
         else
             container.innerHTML = "<h1>Error - Failed URL!</h1>";
     }
     catch (response) {
         container.innerHTML = "<h1>Connection error</h1>";
-    };
-}
-*/
+    };*/
+ }
 
-async function load() {
-    let container = document.querySelector("#use-ajax");
-    let response = await fetch("http://localhost:3000/mock.json");
-    if (response.ok) {
-        let t = await response.json();
-        compras = t.compras;
-        container.innerHTML = mostrarTablaCompras();
-    }
-}
 
 load();
