@@ -47,22 +47,9 @@ function mostrarTablaCompras() {
 }
 
  async function load() {
-/*    let container = document.querySelector("#use-ajax"); 
-    container.innerHTML = "<h1>Loading...</h1>";
-    try {
-        let response = await fetch('/produto');
-        if (response.ok) {
-            let t = await response.json(); 
-            compras = t;
-            mostrarTablaCompras();
-            container.innerHTML = "";
-        }
-        else
-            container.innerHTML = "<h1>Error - Failed URL!</h1>";
-    }
-    catch (response) {
-        container.innerHTML = "<h1>Connection error</h1>";
-    };*/
+    let response = await fetch('/produto');
+    compras = await response.json(); 
+    mostrarTablaCompras();
  }
 
 

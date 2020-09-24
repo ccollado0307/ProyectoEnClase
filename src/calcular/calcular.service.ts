@@ -18,7 +18,7 @@ export class CalcularService {
             case 'dividir':
                 resultado = {"resultado":`${num1/num2}`};
                 break;
-        }
+        } 
         return resultado;
     }
 
