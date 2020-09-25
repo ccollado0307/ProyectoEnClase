@@ -48,9 +48,6 @@ function mostrarTablaCompras() {
 
  async function load() {
     let response = await fetch('/produto');
-    compras = await response.json(); 
+    compras = await response.json(); console.log('carrito');
     mostrarTablaCompras();
- }
-
-
-load();
+}
