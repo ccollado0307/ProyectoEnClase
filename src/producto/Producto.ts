@@ -7,11 +7,11 @@ export class Producto{
         this.precio = precio;
     }
 
-    public GetProducto():string{ 
+    public getNombreProducto():string{ 
         return this.nombreProducto;
     }
     
-    public GetPrecio():number{
+    public getPrecio():number{
         return this.precio;
     }
 }
