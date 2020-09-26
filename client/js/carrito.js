@@ -5,16 +5,30 @@ btnTotal.addEventListener("click", sumar);
 
 let compras = [];
 
-function agregar() {
+async function agregar() {
     console.log("Funcion Agregar");
     let producto = document.querySelector('#producto').value;
     let precio = parseInt(document.querySelector('#precio').value);
+    
     let renglon = {
-        "producto": producto,
+        "nombreProducto": producto,
         "precio": precio
     }
-    compras.push(renglon);
-    mostrarTablaCompras();
+    
+    let respuesta = await fetch('http://localhost:3000/productos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(renglon)
+    });
+
+    if (respuesta.ok) {
+        compras.push(renglon)
+        mostrarTablaCompras();
+    } else {
+        console.log('Hubo un error');
+    }
 }
 
 function sumar() {
@@ -38,7 +52,7 @@ function mostrarTablaCompras() {
     for (let r of compras) {
         html += `
             <tr>
-            <td>${r.producto}</td>
+            <td>${r.nombreProducto}</td>
             <td>${r.precio}</td>
             </tr>
         `;
@@ -46,8 +60,8 @@ function mostrarTablaCompras() {
     document.querySelector("#tblCompras").innerHTML = html; 
 }
 
- async function load() {
+ async function load() { console.log('carrito');
     let response = await fetch('/produto');
-    compras = await response.json(); console.log('carrito');
+    compras = await response.json(); 
     mostrarTablaCompras();
 }
